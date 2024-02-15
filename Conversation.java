@@ -36,10 +36,10 @@ class Conversation {
     transcript.add(response);
     
  
+    
+    String[] triggerWords = {"I ", " me ", " you ", " my ", " your ", " am ", " are "};
+    String[] altWords = {" you ", " you ", " me ", " your ", " my ", " are ", " am "};
     String[] split = response.split(" ");
-    String[] triggerWords = {"I", "me", "you", "my", "your", "am", "are"};
-    String[] altWords = {"you", "you", "me", "your", "my", "are", "am"};
-   
     
 		int counter = 0;
     String input = "";
@@ -63,8 +63,8 @@ class Conversation {
 
     }
     if (counter > 0) {
-      System.out.println(input);
-      transcript.add(input); 
+      System.out.println(input + "?");
+      transcript.add(input + "?"); 
     }
     if (counter <= 0){
        Random rand = new Random();
@@ -82,9 +82,9 @@ class Conversation {
     
     
   
-  System.out.println("Goodbye!");
+  System.out.println("Goodbye! \n");
   System.out.println("*****Transcript***** \n ");
-  System.out.println(transcript);}
+  System.out.println(transcript + "\n");}
   
    }
 
