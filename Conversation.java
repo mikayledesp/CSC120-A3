@@ -81,8 +81,10 @@ class Conversation {
     
     
   
-  System.out.println("Goodbye!");
-          System.out.println("*****Transcript*****");
-            System.out.println(transcript);}
+    System.out.println("Goodbye!");
+    System.out.println("*****Transcript*****" + "\n");
+    System.out.println(transcript);
+    System.out.println("\n"+"Done!");
   
-   }
+  }
+}
