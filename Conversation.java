@@ -4,14 +4,17 @@ import java.util.Random;
 
 class Conversation {
   public static void main(String[] arguments) {
+
   
     Scanner userInput = new Scanner(System.in);
+    //List of canned responses for when no trigger words are found in response
 		ArrayList < String > list = new ArrayList < String > ();
         list.add("Huh...");
         list.add("Wow, how cool...");
         list.add("Nice!");
         list.add("Really?");
         list.add("Awesome!");
+    // Empty list that holds transcript
     ArrayList <String> transcript = new ArrayList<>();
 
 
@@ -23,29 +26,28 @@ class Conversation {
     userInput.nextLine(); //clear out
     String rounds = String.valueOf(roundNum);
     transcript.add(rounds); 
-
+    // starting prompt after rounds are establisged
     String prompt = "Hey, what's on your mind?";
-  
-  
     System.out.println(prompt);
     transcript.add(prompt);
-    
+  //Method that controls/implements  the number of rounds that the user asks for
    for (int i=0; i < roundNum; i++){
     
     String response = userInput.nextLine();
     transcript.add(response);
     
- 
+    //splicing the words 
     String[] split = response.split(" ");
+    //Lists of the trigger worlds and the alt words that the program replaces them with
     String[] triggerWords = {"I", "me", "you", "my", "your", "am", "are"};
     String[] altWords = {"you", "you", "me", "your", "my", "are", "am"};
   
 		//counter to help kick in the filler reponses 
 		int counter = 0;
-		//rebuilds the sentences i think??
+		// builds input in order to reprint the altered response
     String input = "";
 
-    //word traverser to find the rigger words in response
+    //Word traverser to find the rigger words in response and adds to the counter if it does
     for (int j=0; j < split.length; j++){
         String word = "";
         
@@ -59,6 +61,7 @@ class Conversation {
      
 
     }
+    // Checks counter that increases when a trigger word is inside a response. If counter is less than or equal to 0 the program then prints a response from the random list
     if (counter > 0) {
       System.out.println(input + "?");
       transcript.add(input + "?"); 
@@ -75,7 +78,9 @@ class Conversation {
   
             
     }
-    // code for closing out program 
+    //*//
+    //Code for closing out program by bidding user goodbye and printing out the transcript.
+    //*/
     userInput.close();
     System.out.println("Goodbye!");
     System.out.println("*****Transcript*****" + "\n");
