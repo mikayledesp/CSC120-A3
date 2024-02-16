@@ -14,12 +14,14 @@ class Conversation {
         list.add("Awesome!");
     ArrayList <String> transcript = new ArrayList<>();
 
+
+    // Note: need to make the greeting a string variable to be able to store it in a list
     String round = "Hello, My name is Chatbot! How many rounds would you like? ";
     System.out.println(round);
     transcript.add(round); 
-    int numofRound = userInput.nextInt();
+    int roundNum = userInput.nextInt();
     userInput.nextLine(); //clear out
-    String rounds = String.valueOf(numofRound);
+    String rounds = String.valueOf(roundNum);
     transcript.add(rounds); 
 
     String prompt = "Hey, what's on your mind?";
@@ -28,7 +30,7 @@ class Conversation {
     System.out.println(prompt);
     transcript.add(prompt);
     
-   for (int i=0; i < numofRound; i++){
+   for (int i=0; i < roundNum; i++){
     
     String response = userInput.nextLine();
     transcript.add(response);
@@ -42,22 +44,18 @@ class Conversation {
 		int counter = 0;
 		//rebuilds the sentences i think??
     String input = "";
- 
+
+    //word traverser to find the rigger words in response
     for (int j=0; j < split.length; j++){
         String word = "";
         
-      for (int k=0; k<  triggerWords.length; k++){
-        if (split[j].equalsIgnoreCase(triggerWords[k])){
+      for (int k=0; k<triggerWords.length; k++){
+        if (split[j].equals(triggerWords[k])){
             counter++;
-            word = altWords[k];
+            word = altWords[k];} }
 
-          }
-        }
         if (word.equals("")){
-          input += split[j] + " ";
-        } else {
-          input += word + " "; 
-        }
+          input += split[j] + " ";} else {input += word + " ";}
      
 
     }
@@ -77,10 +75,8 @@ class Conversation {
   
             
     }
+    // code for closing out program 
     userInput.close();
-    
-    
-  
     System.out.println("Goodbye!");
     System.out.println("*****Transcript*****" + "\n");
     System.out.println(transcript);
